@@ -8,6 +8,10 @@ If you are not already in the repo folder, run:
 cd tutorial-repo
 ```
 
+### Shortcut
+If the web app already gave you a setup command, paste it into Cloud Shell now
+and press ENTER. You can skip the rest of this tutorial.
+
 ## Provide your values
 Paste the project ID and email you entered in the web app.
 Use the backend domain provided by your admin (without `https://`).
