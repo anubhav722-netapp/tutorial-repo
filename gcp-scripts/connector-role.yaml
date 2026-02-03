@@ -1,0 +1,217 @@
+# NetApp BlueXP Connector - GCP IAM Role
+# 
+# This file defines the custom IAM role with all permissions required
+# for the NetApp BlueXP Connector to manage cloud resources.
+#
+# These permissions allow the Connector to:
+# - Create and manage CVO instances
+# - Manage storage (disks, snapshots, buckets)
+# - Configure networking (firewalls, load balancers)
+# - Access KMS for encryption
+# - Use Infrastructure Manager for deployments
+
+title: NetApp BlueXP Connector Role
+description: Permissions for the service account associated with the NetApp BlueXP Connector
+stage: GA
+includedPermissions:
+# IAM Permissions
+- iam.serviceAccounts.actAs
+- iam.serviceAccounts.get
+- iam.serviceAccounts.getIamPolicy
+- iam.serviceAccounts.list
+
+# Compute - Instances
+- compute.instances.addAccessConfig
+- compute.instances.attachDisk
+- compute.instances.create
+- compute.instances.delete
+- compute.instances.detachDisk
+- compute.instances.get
+- compute.instances.getSerialPortOutput
+- compute.instances.list
+- compute.instances.setDeletionProtection
+- compute.instances.setLabels
+- compute.instances.setMachineType
+- compute.instances.setMetadata
+- compute.instances.setServiceAccount
+- compute.instances.setTags
+- compute.instances.start
+- compute.instances.stop
+- compute.instances.updateDisplayDevice
+- compute.instances.updateNetworkInterface
+- compute.instances.use
+
+# Compute - Disks
+- compute.disks.create
+- compute.disks.createSnapshot
+- compute.disks.delete
+- compute.disks.get
+- compute.disks.list
+- compute.disks.setLabels
+- compute.disks.use
+
+# Compute - Snapshots
+- compute.snapshots.create
+- compute.snapshots.delete
+- compute.snapshots.get
+- compute.snapshots.list
+- compute.snapshots.setLabels
+
+# Compute - Images
+- compute.images.get
+- compute.images.getFromFamily
+- compute.images.list
+- compute.images.useReadOnly
+
+# Compute - Machine Types & Zones
+- compute.machineTypes.get
+- compute.zones.get
+- compute.zones.list
+- compute.regions.get
+- compute.regions.list
+
+# Compute - Networks & Subnetworks
+- compute.networks.get
+- compute.networks.list
+- compute.networks.updatePolicy
+- compute.subnetworks.get
+- compute.subnetworks.list
+- compute.subnetworks.use
+- compute.subnetworks.useExternalIp
+
+# Compute - Firewalls
+- compute.firewalls.create
+- compute.firewalls.delete
+- compute.firewalls.get
+- compute.firewalls.list
+
+# Compute - Addresses
+- compute.addresses.get
+- compute.addresses.list
+- compute.addresses.createInternal
+- compute.addresses.deleteInternal
+- compute.addresses.useInternal
+- compute.addresses.setLabels
+
+# Compute - Instance Groups
+- compute.instanceGroups.create
+- compute.instanceGroups.delete
+- compute.instanceGroups.get
+- compute.instanceGroups.update
+- compute.instanceGroups.use
+
+# Compute - Health Checks
+- compute.healthChecks.create
+- compute.healthChecks.delete
+- compute.healthChecks.get
+- compute.healthChecks.useReadOnly
+
+# Compute - Backend Services
+- compute.backendServices.create
+- compute.regionBackendServices.create
+- compute.regionBackendServices.delete
+- compute.regionBackendServices.get
+- compute.regionBackendServices.list
+- compute.regionBackendServices.update
+- compute.regionBackendServices.use
+
+# Compute - Forwarding Rules
+- compute.forwardingRules.create
+- compute.forwardingRules.delete
+- compute.forwardingRules.get
+- compute.forwardingRules.setLabels
+
+# Compute - Resource Policies
+- compute.resourcePolicies.create
+- compute.resourcePolicies.delete
+- compute.resourcePolicies.get
+
+# Compute - Operations & Projects
+- compute.globalOperations.get
+- compute.zoneOperations.get
+- compute.projects.get
+
+# Storage - Buckets
+- storage.buckets.create
+- storage.buckets.delete
+- storage.buckets.get
+- storage.buckets.getIamPolicy
+- storage.buckets.list
+- storage.buckets.update
+
+# Storage - Objects
+- storage.objects.create
+- storage.objects.delete
+- storage.objects.get
+- storage.objects.list
+- storage.objects.update
+
+# Cloud KMS
+- cloudkms.cryptoKeyVersions.useToEncrypt
+- cloudkms.cryptoKeys.get
+- cloudkms.cryptoKeys.getIamPolicy
+- cloudkms.cryptoKeys.list
+- cloudkms.cryptoKeys.setIamPolicy
+- cloudkms.keyRings.get
+- cloudkms.keyRings.getIamPolicy
+- cloudkms.keyRings.list
+- cloudkms.keyRings.setIamPolicy
+
+# Deployment Manager (for legacy support)
+- deploymentmanager.compositeTypes.get
+- deploymentmanager.compositeTypes.list
+- deploymentmanager.deployments.create
+- deploymentmanager.deployments.delete
+- deploymentmanager.deployments.get
+- deploymentmanager.deployments.list
+- deploymentmanager.manifests.get
+- deploymentmanager.manifests.list
+- deploymentmanager.operations.get
+- deploymentmanager.operations.list
+- deploymentmanager.resources.get
+- deploymentmanager.resources.list
+- deploymentmanager.typeProviders.get
+- deploymentmanager.typeProviders.list
+- deploymentmanager.types.get
+- deploymentmanager.types.list
+
+# Infrastructure Manager (Terraform)
+- config.deployments.create
+- config.deployments.delete
+- config.deployments.deleteState
+- config.deployments.get
+- config.deployments.getState
+- config.deployments.list
+- config.deployments.lock
+- config.deployments.update
+- config.deployments.updateState
+- config.deployments.getLock
+- config.operations.get
+- config.previews.get
+- config.previews.list
+- config.previews.upload
+- config.revisions.get
+- config.revisions.getState
+- config.resources.list
+- config.artifacts.import
+
+# Cloud Build
+- cloudbuild.builds.get
+- cloudbuild.connections.list
+- cloudbuild.repositories.accessReadToken
+- cloudbuild.repositories.list
+
+# Logging
+- logging.logEntries.create
+- logging.logEntries.list
+- logging.logEntries.route
+- logging.privateLogEntries.list
+
+# Monitoring
+- monitoring.timeSeries.list
+
+# Resource Manager
+- resourcemanager.projects.get
+
+# Cloud Quotas
+- cloudquotas.quotas.get
